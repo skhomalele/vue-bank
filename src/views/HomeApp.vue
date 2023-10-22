@@ -4,6 +4,8 @@
   <template #header>
     <button class="btn primary" @click="modal = true">Создать</button>
   </template>
+
+  <request-filter v-model="filter"></request-filter>
   <request-table :requests="requests"></request-table>
 
   <teleport to="body">
@@ -20,15 +22,16 @@ import AppPage from "@/components/UI/AppPage";
 import AppLoader from "@/components/UI/AppLoader";
 import RequestTable from "@/components/request/RequestTable";
 import RequestModal from "@/components/request/RequestModal";
-import {ref, computed, onMounted} from "vue";
+import RequestFilter from "@/components/request/RequestFilter";
+import {ref, computed, onMounted,} from "vue";
 import {useStore} from "vuex";
 
 export default {
-  components: {AppPage, RequestTable, AppModal, RequestModal, AppLoader},
+  components: {AppPage, RequestTable, AppModal, RequestModal, AppLoader, RequestFilter},
   setup() {
     const store = useStore()
-    const requests = computed(() => store.getters['request/requests'])
     const loading = ref(false)
+    const filter = ref({})
 
     onMounted( async () => {
       loading.value = true
@@ -36,12 +39,27 @@ export default {
       loading.value = false
     })
 
+    const requests = computed(() => store.getters['request/requests']
+        .filter(request => {
+          if(filter.value.name) {
+            return request.fio.includes(filter.value.name)
+          }
+          return request
+        })
+        .filter(request => {
+          if(filter.value.status) {
+            return filter.value.status === request.status
+          }
+          return request
+        }))
+
     const modal = ref(false)
 
     return {
       modal,
       requests,
-      loading
+      loading,
+      filter
     }
   }
 }

@@ -18,18 +18,18 @@
       <td>{{ request.phone }}</td>
       <td>{{ currency(request.amount) }}</td>
       <td><AppStatus :type="request.status"></AppStatus></td>
-<!--      <td>-->
-<!--        <router-link v-slot="{navigate}" custom :to="{name: 'Request', params: {id: request.id}}">-->
-<!--          <button class="btn primary" @click="navigate">Открыть</button>-->
-<!--        </router-link>-->
-<!--      </td>-->
+      <td>
+        <router-link v-slot="{navigate}" custom :to="{name: 'Request', params: {id: request.id}}">
+          <button class="btn" @click="navigate">Открыть</button>
+        </router-link>
+      </td>
     </tr>
     </tbody>
   </table>
 </template>
 
 <script>
-import {currency} from "@/utils/currency";
+import  {currency} from "@/utils/currency";
 import AppStatus from "@/components/UI/AppStatus";
 
 export default {

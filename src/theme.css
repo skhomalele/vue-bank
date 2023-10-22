@@ -493,6 +493,8 @@ h3 {
     background: #ccc;
     z-index: 100;
     padding: .5rem;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
 }
 
 .sidebar-close {

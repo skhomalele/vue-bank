@@ -1,7 +1,8 @@
 <template>
   <form class="card" @submit.prevent="onSubmit">
     <h1>Войти в систему</h1>
-
+    <p>Логин: test@mail.ru</p>
+    <p>Пароль: 12345678</p>
     <div :class="['form-control', {invalid: eError}]">
       <label for="email">Email</label>
       <input type="email" id="email" placeholder="ivan.ivanov@mail.com" v-model="email" @blur="eBlur">
