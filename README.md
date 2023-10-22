@@ -1,24 +1,7 @@
 # untitled2
 
-## Project setup
-```
-npm install
-```
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+### Учебный проект по Vue 3 с Vuex, VueRouter, Firebase
 
-### Compiles and minifies for production
-```
-npm run build
-```
 
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### https://pet-online-bank.web.app/
